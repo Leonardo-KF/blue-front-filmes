@@ -160,5 +160,5 @@ a {
 }
 
 .card-films-content {
-  border-color: blueviolet !important;
+  border: solid 4px blueviolet !important;
 }
