@@ -162,3 +162,10 @@ a {
 .card-films-content {
   border: solid 4px blueviolet !important;
 }
+
+.box-film-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10%;
+}
