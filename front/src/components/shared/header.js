@@ -1,10 +1,12 @@
 import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoLogOutOutline } from "react-icons/io5";
 
 function Header() {
+  const navigate = useNavigate();
   function LogoutUser() {
     localStorage.removeItem("token");
+    navigate("/login");
   }
 
   const [user, setUser] = useState();

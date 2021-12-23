@@ -24,24 +24,26 @@ function DetailFilm() {
   }, []);
 
   return (
-    <div className="box-film">
-      <div class="card mb-3" style={{ "max-width": "540px" }}>
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src={movie.cover}
-              class="img-fluid rounded-start"
-              alt={movie.title}
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{movie.title}</h5>
-              {genres.map((item) => {
-                return <span className="badge bg-primary">{item}</span>;
-              })}
-              <p class="card-text">{movie.resume}</p>
-              <p class="card-text">{movie.year}</p>
+    <div className="box-film-detail">
+      <div className="box-film">
+        <div class="card mb-3" style={{ "max-width": "540px" }}>
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src={movie.cover}
+                class="img-fluid rounded-start"
+                alt={movie.title}
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{movie.title}</h5>
+                {genres.map((item) => {
+                  return <span className="badge bg-primary">{item}</span>;
+                })}
+                <p class="card-text">{movie.resume}</p>
+                <p class="card-text">{movie.year}</p>
+              </div>
             </div>
           </div>
         </div>
