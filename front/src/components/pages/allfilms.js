@@ -1,8 +1,15 @@
 import { useState, useEffect, React } from "react";
 import CardFilm from "../structure/cardfilm";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function AllFilms() {
+  const navigate = useNavigate();
+
+  if (!localStorage.getItem("token")) {
+    navigate("/login");
+  }
+
   const [Movies, setMovies] = useState([]);
 
   async function getMovies() {

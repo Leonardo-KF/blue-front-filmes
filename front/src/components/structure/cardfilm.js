@@ -42,7 +42,7 @@ function CardFilm(props) {
   }
 
   return (
-    <div className="card" style={{ width: "18rem" }}>
+    <div className="card card-films-content" style={{ width: "18rem" }}>
       <Link to={`/filme/${props.id}`}>
         <img src={props.img} className="card-img-top" alt={props.alt} />
       </Link>

@@ -4,6 +4,9 @@ import axios from "axios";
 
 function Perfil() {
   const navigate = useNavigate();
+  if (!localStorage.getItem("token")) {
+    navigate("/login");
+  }
   const [user, setUser] = useState("");
   const getUser = async () => {
     const user = await axios.get("/auth/profile", {
