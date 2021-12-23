@@ -10,6 +10,7 @@ function AllFilms() {
     navigate("/login");
   }
 
+  const [build, setBuild] = useState(false);
   const [Movies, setMovies] = useState([]);
 
   async function getMovies() {
@@ -17,10 +18,13 @@ function AllFilms() {
   }
 
   useEffect(() => {
+    setBuild(true);
     getMovies().then((response) => {
-      setMovies(response.data);
+      if (build) {
+        setMovies(response.data);
+      }
     });
-  }, []);
+  }, [build]);
 
   return (
     <div className="all-films-content">

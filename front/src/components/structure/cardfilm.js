@@ -5,6 +5,7 @@ import axios from "axios";
 function CardFilm(props) {
   const [status, setStatus] = useState("❌");
   const [buttoncontent, setButtonContent] = useState("Assistido");
+  const [build, setBuild] = useState(false);
 
   const [watchMovies, setwatchMovies] = useState([]);
 
@@ -14,12 +15,16 @@ function CardFilm(props) {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       })
       .then((response) => {
-        setwatchMovies(response.data);
+        if (build) {
+          setwatchMovies(response.data);
+        }
       });
   };
-  if (watchMovies === []) {
+
+  useEffect(() => {
+    setBuild(true);
     getMoviesWatched();
-  }
+  }, [build]);
 
   const watchMovie = async () => {
     await axios.patch(`/user/addList/${props.id}`, {
@@ -27,19 +32,12 @@ function CardFilm(props) {
     });
   };
 
-  console.log(watchMovies);
-
-  if (watchMovies) {
-    console.log(watchMovies.length);
-    for (let i = 0; i < watchMovies.length; i++) {
-      console.log("rodou for");
-      if (props.id === watchMovies[i].id) {
-        console.log("rodou if");
-        setStatus("✅");
-        setButtonContent("Não assistido");
-      }
+  watchMovies.map((movie) => {
+    if (movie.id == props.id) {
+      setStatus("✅");
+      setButtonContent("Não assistido");
     }
-  }
+  });
 
   return (
     <div className="card card-films-content" style={{ width: "18rem" }}>
