@@ -17,9 +17,13 @@ function Viewedfilms() {
     });
   };
   useEffect(() => {
-    getMoviesWatched().then((response) => {
-      setwatchMovies(response.data);
-    });
+    getMoviesWatched()
+      .then((response) => {
+        setwatchMovies(response.data);
+      })
+      .catch(() => {
+        navigate("/login");
+      });
   }, []);
 
   console.log(watchMovies);

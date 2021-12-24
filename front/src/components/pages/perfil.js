@@ -4,9 +4,14 @@ import axios from "axios";
 
 function Perfil() {
   const navigate = useNavigate();
-  if (!localStorage.getItem("token")) {
+
+  if (localStorage.getItem("token") == null) {
+    console.log("rodou");
     navigate("/login");
   }
+
+  console.log(localStorage.getItem("token"));
+
   const [user, setUser] = useState("");
   const getUser = async () => {
     const user = await axios.get("/auth/profile", {
@@ -16,7 +21,9 @@ function Perfil() {
   };
 
   useEffect(() => {
-    getUser();
+    getUser().catch(() => {
+      navigate("/login");
+    });
   }, []);
 
   function Viewedfilms() {
